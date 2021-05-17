@@ -26,6 +26,9 @@ for singer in singerlist:
     searchwindow = driver.find_element_by_xpath("""//*[@id="sc-fd"]""")
     searchwindow.clear()
 
+    like = driver.find_element_by_xpath("""/html/body/div[3]/div[2]/div/div[1]/div[3]/div/div[2]/span/a[3]/em""").text
+    print(like)
+
 time.sleep(3)
 
 driver.close()
