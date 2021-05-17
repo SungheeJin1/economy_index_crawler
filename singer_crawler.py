@@ -1,6 +1,8 @@
 import time
 import selenium
 from selenium import webdriver
+import matplotlib.pyplot as plt
+import numpy as np
 
 print("가수 이름 5개를 입력하시오(콤마로 구분할 것)")
 print('ex : 아이유,성시경,오마이걸,SG워너비,박재정')
@@ -13,6 +15,7 @@ driver.get(url=URL)
 
 songnum = []
 likes = []
+
 
 for singer in singerlist:
     searchwindow = driver.find_element_by_xpath("""//*[@id="sc-fd"]""")
@@ -36,10 +39,31 @@ for singer in singerlist:
     searchwindow = driver.find_element_by_xpath("""//*[@id="sc-fd"]""")
     searchwindow.clear()
 
+likes1=[]
+for n in likes:
+    new = ''
+    for i in n:
+        if i.isalnum():
+            new+=i
+        else:
+            continue
+    likes1.append(new)
+
+likes2=[]
+for i in likes1:
+    t=float(i)
+    likes2.append(t)
+
 time.sleep(2)
 
 driver.close()
 
 print(singerlist)
 print(songnum)
-print(likes)
+print(likes2)
+
+x=np.arange(5)
+plt.rc('font', family='Malgun Gothic')
+plt.bar(x, likes2)
+plt.xticks(x, singerlist)
+plt.show()
