@@ -73,9 +73,9 @@ time.sleep(2)
 
 driver.close()
 
-print(singerlist)
-print(songnum2)
-print(likes2)
+print('가수 이름',singerlist)
+print('가수 별 곡 건수',songnum2)
+print('가수 별 좋아요 수',likes2)
 
 x1 = np.arange(5)
 plt.figure(1)
